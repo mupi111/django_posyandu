@@ -1,0 +1,10 @@
+{% extends 'siposyandu/base.html' %} 
+{% block content %} 
+    <a href="{% url 'home_page' %}"><b><--Kembali</b></a><br><br>
+        <h3>Edit Data Anak</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" values="Simpan">
+        </form>
+{% endblock %}

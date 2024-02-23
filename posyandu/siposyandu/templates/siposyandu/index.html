@@ -1,0 +1,33 @@
+{% extends 'siposyandu/base.html' %} 
+{% block content %} 
+<a class="btn btn-success" href="{% url 'pos_add' %}" role="button">Tambah Data</a> &nbsp;
+<a class="btn btn-secondary" href="{% url 'pos_pdf' %}" role="button">Cetak PDF</a><br><br>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">NO</th>
+        <th scope="col">NIK</th>
+        <th scope="col">Nama  Anak</th>
+        <th scope="col">Jenis Kelamin</th>
+        <th scope="col">Tempat Lahir</th>
+        <th scope="col">Aksi</th>
+      </tr>
+      {% for pos in siposyandu %}
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">{{ forloop.counter }}</td>
+        <td>{{ pos.nik }}</td>
+        <td>{{ pos.nama }}</td>
+        <td>{{ pos.jk }}</td>
+        <td>{{ pos.tmpt_lahir }}</td>
+        <td>
+          <a class="btn btn-warning" href="{% url 'pos_detail_view' pos.id %}" role="button">Detail</a>
+          <a class="btn btn-primary" href="{% url 'pos_edit' pos.id %}" role="button">Edit</a>
+          <a class="btn btn-danger" href="{% url 'pos_delete' pos.id %}" role="button">Hapus</a>
+        </td>
+    </tr>
+        {% endfor %}
+    </tbody>
+    </table><br><br>
+{% endblock %}

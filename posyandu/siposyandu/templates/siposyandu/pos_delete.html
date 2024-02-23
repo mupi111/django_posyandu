@@ -1,0 +1,14 @@
+{% extends 'siposyandu/base.html' %} 
+{% block content %} 
+    <a href="{% url 'home_page' %}"><b><--Kembali</b></a><br><br>
+        <h5>!! Peringatan !!</h5> 
+        Apakah Anda yakin ingin menghapus data anak ?
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <input type="submit" values="Ya, yakin">
+        </form><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
+
+

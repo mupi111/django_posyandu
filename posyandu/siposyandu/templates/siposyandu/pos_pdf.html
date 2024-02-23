@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Print Data</title>
+    <style type="text/css">
+      body {
+        font-family: arial;
+        background-color: #fff;
+      }
+      .kop {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 30px;
+        border-bottom: 4px solid #000;
+        padding: 2px;
+      }
+      .tengah {
+        text-align: center;
+        line-height: 5px;
+      }
+      .isi {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 10px;
+        padding: 2px;
+      }
+      th,
+      td {
+        border: 1px solid #666;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="kop">
+      <table width="97%">
+        <tr><br>
+          <h2 style="border:none" class="tengah">
+            <b>POSYANDU DESA GEMPOLAN</b>
+          </h2><br><br>
+        </tr>
+      </table>
+    </div>
+    <div class="isi">
+    <p align="right"></p>
+      <h5 align="center"><p>
+      DAFTAR DATA ANAK
+      </p></h5></br>
+      <div class="isi">
+        <div class="data">
+          <table  width="100%">
+            <thead>
+              <tr>
+                <th>NIK</th>
+                <th>Nama</th>
+                <th>Tempat Lahir</th>
+                <th>Jenis Kelamin</th>
+                <th>BB</th>
+                <th>TB</th>
+                <th>Nama Ayah</th>
+                <th>Nama Ibu</th>
+                <th>Agama</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for pos in siposyandu %}
+                <tr>
+                    <td>{{ pos.nik }}</td>
+                    <td>{{ pos.nama }}</td>
+                    <td>{{ pos.tmpt_lahir }}</td>
+                    <td>{% if pos.jk == 'l' %} 
+                        Laki-laki 
+                        {% elif pos.jk == 'p' %} 
+                            Perempuan
+                            {% else %} 
+                            Tidak ada 
+                    {% endif %}</td>
+                    <td>{{ pos.bb }}</td>
+                    <td>{{ pos.tb }}</td>
+                    <td>{{ pos.nama_ayah }}</td>
+                    <td>{{ pos.nama_ibu }}</td>
+                    <td>{% if pos.agama == 'is' %} 
+                            Islam
+                            {% elif pos.agama == 'kk' %} 
+                            Kristen Katolik 
+                            {% elif pos.agama == 'kp' %} 
+                            Kristen Protestan 
+                            {% elif pos.agama == 'hi' %} 
+                            Hindu >
+                            {% elif pos.agama == 'bu' %} 
+                            Budha 
+                            {% else %} 
+                                Ateis 
+                    {% endif %}</td>
+                </tr>
+            {% endfor %}    
+            </tbody>
+          </table>
+        </div>
+    <script type="text/javascript">
+        window.print();
+    </script>
+  </body>
+</html>

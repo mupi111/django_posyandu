@@ -1,0 +1,34 @@
+{% extends 'siposyandu/base.html' %} 
+{% block content %} 
+    <a href="{% url 'home_page' %}"><b><--Kembali</b></a><br><br>
+    <h3>Detail Data Anak</h3>
+    <h5 style="color : rgb(30, 29, 91)">{{ siposyandu.nama }}</h5>
+    <b>NIK : </b>{{ siposyandu.nik }}<br>
+    <b>Tempat Lahir : </b>{{ siposyandu.tmpt_lahir }}<br>
+    <b>Jenis Kelamin : </b>
+    {% if siposyandu.jk == 'l' %} 
+        Laki-laki 
+        {% elif siposyandu.jk == 'p' %} 
+            Perempuan
+            {% else %} 
+            Tidak ada 
+    {% endif %}<br>
+    <b>Berat Badan : </b>{{ siposyandu.bb }}<br>
+    <b>Tinggi Badan : </b>{{ siposyandu.tb }}<br>
+    <b>Nama Ayah : </b>{{ siposyandu.nama_ayah }}<br>
+    <b>Nama Ibu : </b>{{ siposyandu.nama_ibu  }}<br>
+    <b>Agama :</b>
+        {% if siposyandu.agama == 'is' %} 
+            Islam
+            {% elif siposyandu.agama == 'kk' %} 
+            Kristen Katolik 
+            {% elif siposyandu.agama == 'kp' %} 
+            Kristen Protestan 
+            {% elif siposyandu.agama == 'hi' %} 
+            Hindu >
+            {% elif siposyandu.agama == 'bu' %} 
+            Budha 
+            {% else %} 
+                Ateis 
+       {% endif %}<br><br><br><br>
+{% endblock %}
